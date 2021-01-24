@@ -14,7 +14,6 @@ class ProfileViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Test Button", for: .normal)
         button.backgroundColor = .systemPink
-        button.frame = CGRect(x: 0, y: 0, width: 200, height: 20)
         
         return button
     }()
@@ -27,8 +26,8 @@ class ProfileViewController: UIViewController {
         testButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             testButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
-            testButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
-            testButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+            testButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor), //Без этого ограничения кнопка будет расположена не верно: Привяка левого и правого края кнопки задает ее ширину
+            testButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
         ])
     }
     

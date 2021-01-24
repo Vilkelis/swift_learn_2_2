@@ -25,16 +25,18 @@ class ProfileHeaderView: UIView {
     @IBAction func statusTextFieldChanged(_ sender: UITextField) {
         statusText = sender.text ?? ""
     }
+        
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        initSubviews()
+    }
     
     override func layoutSubviews() {
         setupSubviews()
     }
-    
-    private func setupSubviews() {
-        avatarImageView.layer.borderWidth = 3
+     
+    private func initSubviews() {
         avatarImageView.layer.borderColor = UIColor.white.cgColor
-        avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
-        avatarImageView.clipsToBounds = true
         
         fullNameLabel.font = .systemFont(ofSize: 18, weight: .bold)
         fullNameLabel.textColor = .black
@@ -42,28 +44,37 @@ class ProfileHeaderView: UIView {
         statusLabel.font = .systemFont(ofSize: 14)
         statusLabel.textColor = .gray
         
-        statusTextField.placeholder = "New status text"
         statusTextField.font = .systemFont(ofSize: 15, weight: .regular)
         statusTextField.borderStyle = .roundedRect
         statusTextField.textColor = .black
-        statusTextField.layer.borderWidth = 1
         statusTextField.layer.borderColor = UIColor.black.cgColor
-        statusTextField.layer.cornerRadius = 12
-        statusTextField.layer.masksToBounds = true
         statusTextField.backgroundColor = .white
         
-        setStatusButton.setTitle("Set status", for: .normal)
         setStatusButton.setTitleColor(.white, for: .normal)
-        setStatusButton.layer.cornerRadius = 4
-        setStatusButton.clipsToBounds = true
-        setStatusButton.layer.shadowColor = UIColor.black.cgColor
-        setStatusButton.layer.shadowRadius = 4
-        setStatusButton.layer.shadowOpacity = 0.7
-        setStatusButton.layer.shadowOffset = CGSize(width: 4, height: 4)
         setStatusButton.backgroundColor = .systemBlue
-        
+        setStatusButton.layer.shadowColor = UIColor.black.cgColor
+        setStatusButton.layer.shadowOpacity = 0.7
+
         avatarImageView.image = UIImage(named: "hipster_cat")
         fullNameLabel.text = "Hipster cat"
         statusLabel.text = statusText
+        statusTextField.placeholder = "New status text"
+        setStatusButton.setTitle("Set status", for: .normal)
+    }
+    
+    private func setupSubviews() {
+        avatarImageView.layer.borderWidth = 3
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
+        avatarImageView.clipsToBounds = true
+                
+        statusTextField.layer.borderWidth = 1
+        statusTextField.layer.cornerRadius = 12
+        statusTextField.layer.masksToBounds = true
+        
+        setStatusButton.layer.cornerRadius = 4
+        setStatusButton.clipsToBounds = true
+        setStatusButton.layer.shadowRadius = 4
+        setStatusButton.layer.shadowOffset = CGSize(width: 4, height: 4)
+        setStatusButton.layer.masksToBounds = false
     }
 }
