@@ -20,6 +20,7 @@ class ProfileHeaderView: UIView {
     
     @IBAction func setStatusButtonTouch(_ sender: UIButton) {
         statusLabel.text = statusText
+        print(statusLabel.text ?? "") // Я думал что нужно полностью изменить функционал этого метода по условиям задания **, поэтому вывод в консоль текста убрал в предыдущей версии
     }
     
     @IBAction func statusTextFieldChanged(_ sender: UITextField) {
